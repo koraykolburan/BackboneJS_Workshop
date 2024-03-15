@@ -1,0 +1,94 @@
+/* =========================================================
+ * Base styles that apply only to generic element selectors
+ * =========================================================*/
+body, *, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    line-height: 1.5em;
+}
+
+h1 {
+    font-size: 1.8em;
+    line-height: 1em;
+}
+
+h2 {
+    font-size: 1.4em;
+    line-height: 1em;
+}
+
+a, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+em {
+    font-weight: bold;
+}
+
+small {
+    font-size: 0.8em;
+}
+
+/* =========================================================
+ * Style classes starting with "l-" refer to "layout" components
+ * (grouping concepts that affect layout, width and margins)
+ * =========================================================*/
+ .l-pad {
+    padding: 1em;
+ }
+
+ .l-sidebar {
+    width: 250px;
+
+}
+
+/* =========================================================
+ * Modular and reusable styles
+ * =========================================================*/
+
+ .cf {
+    overflow: hidden; /* We need to use clearfix because the topbar contains an element that is floated. When you have a floated element, this element get out of the float. So the topbar doesn't contain it anymore.
+    We need to apply clearfix to the element that contains the floated elements.
+    */
+ }
+
+ .logo {
+    font-family: "Stoke", sans-serif;
+    }
+
+    .logo h1 {
+        display: inline-block;
+        margin-right: 0.5em;
+    }
+
+.logo-sub {
+    color: #5F6367;
+    font-size: 0.6em;
+    font-weight: 100;
+}
+
+.topbar {
+    background-color: #FFFFFF;
+}
+
+.topbar-title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: #5F6367;
+    background-color: #E5F1F9;
+    float: left;
+    border-radius: 12px;
+    }
+    .topbar-title > i {
+        font-size: 1.5em;
+        margin-right: 0.5em;
+    }
+    .topbar-title > h2 {
+        display: inline-block;
+    }
