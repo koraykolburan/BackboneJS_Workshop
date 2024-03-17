@@ -1,0 +1,4 @@
+/*
+The main.js will be responsible for kicking in in application process.
+ 
+*/
