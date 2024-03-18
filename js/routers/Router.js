@@ -49,14 +49,15 @@ app.routers.Router = Backbone.Router.extend({
         app.data.books = new app.models.Books(null, {catId: id}); // COLLECTION & MODEL
         console.log(app.data.books.url()); 
         
+        this._cleanupCurrentView();
         app.data.currentView = new app.views.BooksList({ // VIEW
             collection: app.data.books
         }); 
 
         this._activateBooksListPanel(); // ACTIVATE the books list panel
-        $('[data-id=books-list]').append(app.data.currentView.$el);
+        $('[data-id=books-list]').empty().append(app.data.currentView.$el);
 
-        app.data.books.fetch({reset:true}); // FETCH
+        app.data.books.fetch({reset:true}); // FETCH -- We load the collection
 
 //When you call the FETCH -- Backbone contact the server using the URL property that we specified in the Books.js. and later on the data comes back from the server and only then give us to render.
 
@@ -70,6 +71,8 @@ app.routers.Router = Backbone.Router.extend({
         console.log("Unknown route...");
     },
 
+// ---------------------------------------------- UTILITY FUNCTIONS ---------------------------------------------
+
     _activateBooksListPanel: function(selector) {
         $('[data-id="books-wrapper] .is-visible').removeClass('is-visible');
         $('[data-id=books-list]').addClass('is-visible');
@@ -78,6 +81,13 @@ app.routers.Router = Backbone.Router.extend({
     _activateBookDetailPanel: function(selector) {
         $('[data-id="books-wrapper] .is-visible').removeClass('is-visible');
         $('[data-id=book]').addClass('is-visible');
+    },
+
+    _cleanupCurrentView: function(){
+        if(app.data.currentView) {
+            app.data.currentView.remove();
+            app.data.currentView = null;
+        }
     }
 })
 
@@ -98,5 +108,18 @@ Each one of these two function will activate the corresponding panel on the page
 K) We .addClass(is-visible) for two functions. They shouldn't be visible at the same time. That's why we added data-id="books-wrapper" of their container on the index.html.
 L) That's why we added 'data-id="books-wrapper'.removeClass(is-visible);
 M) We can add 'reset:true' property to FETCH. If we do so backbone will still generate the add events for each one of the of the model that gets loaded from the server but at the end it will also generate a reset event and because our VIEW is LISTENING TO this event. And we will finally render.
+N) Added '_cleanupCurrentView: function(){}' -- This function will take care of ensuring that if there is something already displayed in the web page, we are going to clean it up. And it will reinitialize 'app.data.currentView = null;'
+O) We chained with the empty() the this $('[data-id=books-list]').empty().append(app.data.currentView.$el); (Also $el is create a new Div.)
+P) 
+Q)
+R)
+S)
+T)
+U)
+V)
+W)
+X)
+Y)
+Z)
 -------------------------------------------------------------------------------------------------------------------- 
 */
