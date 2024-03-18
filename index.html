@@ -44,17 +44,17 @@
         <div class="categories l-sidebar">
             <ul>
                 <li><a href="#category/all">All</a></li>
-                <li><a href="#category/">Science Fiction</a></li>
-                <li><a href="">Romance</a></li>
-                <li><a href="">Horror</a></li>
-                <li><a href="">Sports</a></li>
+                <li><a href="#category/scifi">Science Fiction</a></li>
+                <li><a href="#category/romance">Romance</a></li>
+                <li><a href="#category/horror">Horror</a></li>
+                <li><a href="#category/sport">Sports</a></li>
             </ul>
         </div>
     </aside>
 
     <!-- Content -->
-    <div class="books-wrapper">
-        <div class="books l-content l-content-constrained">
+    <div class="books-wrapper" data-id="books-wrapper">
+        <div class="books l-content l-content-constrained" data-id="books-list">
             <ul>
                 <li class="thumb">
                     <a href="#" class="thumb-link">
@@ -102,7 +102,8 @@
     
     <script src="/js/bootstrap.js"></script> <!-- Declaring -->
     <script src="/js/routers/Router.js"></script> <!-- Declaring -->
-
+    <script src="/js/models/Books.js"></script>
+    <script src="/js/views/BookList.js"></script>
     <script src="/js/main.js"></script> <!-- Starting the application process -->
 </body>
 </html>
