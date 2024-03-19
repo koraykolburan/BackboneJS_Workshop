@@ -1,4 +1,22 @@
 /*
+-- The collection is a wrapper around the list of MODELS(Book.js)
+-- That's why Backbone will create an object of type Backbone.model for each one of the elements present into the array.
+*/
+
+//To sum up: this function is a constructor function for the collection
+app.models.Books = Backbone.Collection.extend ({
+    initialize: function(models, options ) {  //the first one will ignore(null) is the list of our models.
+            this.options = options;           //the second it's the option that we additionally provide.
+            
+    },      
+    
+    url: function() {
+        return 'api/books_' + this.options.catId + '.json';
+    }
+})
+
+
+/* -- Creating STEP TO STEP --
 1) Our Books Constructor function will be a Backbone COLLECTION instead of a Backbone MODEL.
 
     Some Notes: There are no major differences between the MODEL and the COLLECTION.
@@ -21,15 +39,3 @@ For ex: new Backbone.Collection([A)models], [B)options])
 
 7) Add the json file '.json'.
 */
-
-//To sum up: this function is a constructor function for the collection
-app.models.Books = Backbone.Collection.extend ({
-    initialize: function(models, options ) {  //the first one will ignore(null) is the list of our models.
-            this.options = options;           //the second it's the option that we additionally provide.
-            
-    },      
-    
-    url: function() {
-        return 'api/books_' + this.options.catId + '.json';
-    }
-})
