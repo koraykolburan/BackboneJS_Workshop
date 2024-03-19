@@ -7,11 +7,21 @@ app.views.BooksList = Backbone.View.extend({
     render: function() {
         console.log("BookList:render");
 
-        this.collection.each(function(model) {
+        this.$el.html('<ul></ul>');
+        let $ul = this.$(ul); //look at ul element 
 
+
+        this.collection.each(function(model) {
+            $ul.append(
+                '<li class="thumb">' +
+                '<a href="#" class="thumb-link">' +
+                    '<img src="" alt="">' +
+                '</a>' +
+            '</li>'
+            )
         })
 
-        this.$el.html('<h1>BookList</h1>');
+
 
         return this;
     }
@@ -26,4 +36,6 @@ Because we didn't tell what type of object are to be stored inside our collectio
 How do we iterate on the collection to the collection. There is a special function a set of functions actually coming from UNDERSCORE LIBRARY.
 
 -- 'this.collection.each(function(model) {})' this variable will be a backbone model that contains each item of the array(in Json).
+
+
 */

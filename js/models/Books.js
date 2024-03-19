@@ -1,6 +1,6 @@
 /*
 -- The collection is a wrapper around the list of MODELS(Book.js)
--- That's why Backbone will create an object of type Backbone.model for each one of the elements present into the array.
+-- That's why Backbone will create an object of type Backbone.model for each one of the elements present into the array.    
 */
 
 //To sum up: this function is a constructor function for the collection
