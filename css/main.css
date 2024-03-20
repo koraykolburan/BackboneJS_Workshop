@@ -35,6 +35,10 @@ small {
     font-size: 0.8em;
 }
 
+header {
+    position: fixed;
+}
+
 img{
     border-radius: 4px;
     box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
@@ -61,7 +65,7 @@ img{
 
 .l-content {
     padding: 1em;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .l-content-constrained {
@@ -76,6 +80,10 @@ img{
 .l-row {
     display: table;
     width: 100%;
+}
+
+.sticky {
+    position: sticky;
 }
 
 /* =========================================================
@@ -125,10 +133,14 @@ img{
     background-color: #FFFFFF;
 }
 
+.topbar a :hover {
+    background-color: #DBE8EF;
+}
+
 .topbar-title {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
-    color: #5F6367;
+    color: #054F7C;
     background-color: #E5F1F9;
     float: left;
     border-radius: 30px;
@@ -149,14 +161,21 @@ img{
     padding: 0.5em;
 }
     .categories a {
-        color: #444;
+        color: #5F6367;
         display: block;
         padding-left: 1em;
         padding-right: 1em;
+        font-weight: 300;
     }
     .categories a:hover {
         background-color: #F5F5F5;
         border-radius: 30px;
+    }
+    .categories a:focus {
+        color: #054F7C;
+        background-color: #E5F1F9;
+        border-radius: 30px;
+        font-weight: 400;
     }
 
 .thumb {
@@ -214,10 +233,31 @@ img{
     opacity: 0.7;
 }
 
+.data-book {
+    position: relative;
+    top: 120px;
+}
+
 /* =========================================================
  * Classes describing state
  * =========================================================*/
 
  .is-visible {
     display: block;
+ }
+
+/* =========================================================
+ * Responsive Design
+ * =========================================================*/
+
+ @media screen and (min-width: 960px) {
+    
+ }
+
+ @media screen and (min-width: 840px) {
+    
+ }
+
+ @media screen and (min-width: 600px) {
+    
  }

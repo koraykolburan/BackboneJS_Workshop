@@ -7,6 +7,7 @@
 app.models.Books = Backbone.Collection.extend ({
     initialize: function(models, options ) {  //the first one will ignore(null) is the list of our models.
             this.options = options;           //the second it's the option that we additionally provide.
+            this.catId = this.options.catId;
             
     },      
     
@@ -38,4 +39,7 @@ B) If you have it and then an object that is a set of options that you want to p
 For ex: new Backbone.Collection([A)models], [B)options])
 
 7) Add the json file '.json'.
+
+8) In this constructor in the INITIALIZE function that is called automatically by Backbone, we can store this object directly into the COLLECTION instead of relying on the presence of the options attribute.
+We can transfer the content of this information directly into the COLLECTION OBJECT so we know that it will be there when we use the COLLECTION.
 */

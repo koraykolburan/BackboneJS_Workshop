@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Stoke:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Stoke:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -18,8 +18,8 @@
 
     <!-- Header -->
     <header>
-        <div class="l-pad">
-            <a href="#">
+        <div class="l-pad sticky">
+            <a href="#category/all">
                 <span class="logo">
                     <i class="fa-solid fa-stairs"></i>
                     <h1>Boogie <span class="logo-sub">App</span></h1>
@@ -28,19 +28,20 @@
         </div>
 
         <div class="topbar cf">
-            <span class="topbar-title l-sidebar l-pad">
-                <i class="fa-solid fa-book"></i>
-                <h2>Books</h2>
-            </span>
+            <a href="#category/all">
+                <span class="topbar-title l-sidebar l-pad">
+                    <i class="fa-solid fa-book"></i>
+                    <h2>Books</h2>
+                </span>
+            </a>
         </div>
 
         <div>
 
         </div>
-    </header>
 
     <!-- Categories -->
-    <aside>
+        <aside>
         <div class="categories l-sidebar">
             <ul>
                 <li><a href="#category/all">All</a></li>
@@ -50,28 +51,14 @@
                 <li><a href="#category/sport">Sports</a></li>
             </ul>
         </div>
-    </aside>
+        </aside>
+
+    </header>    
 
     <!-- Content -->
     <div class="books-wrapper" data-id="books-wrapper">
         <div class="books l-content l-content-constrained" data-id="books-list">
-            <ul>
-                <li class="thumb">
-                    <a href="#" class="thumb-link">
-                        <img src="http://books.google.co.uk/books?id=_tyFxRRpY6YC&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE72awvDIIGNi6ebfjvVEDQz-yTyiFKXCkQHooJAbo8maRaPLMlXCpXWSzmxVZTyilr12edtI_6ZpTHm3dC-OVkNgM82Wo89kN_5dRzhMriEzI97iOVw&source=gbs_api" alt="">
-                    </a>
-                </li>
-                <li class="thumb">
-                    <a href="#" class="thumb-link">
-                        <img src="http://books.google.co.uk/books?id=_tyFxRRpY6YC&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE72awvDIIGNi6ebfjvVEDQz-yTyiFKXCkQHooJAbo8maRaPLMlXCpXWSzmxVZTyilr12edtI_6ZpTHm3dC-OVkNgM82Wo89kN_5dRzhMriEzI97iOVw&source=gbs_api" alt="">
-                    </a>
-                </li>
-                <li class="thumb">
-                    <a href="#" class="thumb-link">
-                        <img src="http://books.google.co.uk/books?id=_tyFxRRpY6YC&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE72awvDIIGNi6ebfjvVEDQz-yTyiFKXCkQHooJAbo8maRaPLMlXCpXWSzmxVZTyilr12edtI_6ZpTHm3dC-OVkNgM82Wo89kN_5dRzhMriEzI97iOVw&source=gbs_api" alt="">
-                    </a>
-                </li>
-            </ul>
+
         </div>
 
         <div class="book">
