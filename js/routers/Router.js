@@ -1,4 +1,4 @@
-/* 
+/*
 [FIRST] --
 The router recognise this URL Pattern(left-side in the routes) for ex: 'category/:id' and fired our 'category' function(right-side in the routes). Passsing the second part of the URL hash fragment in the ':id' variable of the function.
 Example: We can add the URL this: ...html#category/scifi
@@ -40,7 +40,7 @@ app.routers.Router = Backbone.Router.extend({
     },
 
     home: function() {
-        console.log("Home");
+        console.log("Home" + app.data.bookId);
     },
 
     category: function(id) {                
@@ -65,6 +65,18 @@ app.routers.Router = Backbone.Router.extend({
 
     book: function(id, bookId) {            // passing the parameter the 'id' and 'bookId' of the category
         console.log("book " + bookId + " for category " + id);
+
+        app.data.book = new app.data.models.Book({id: bookId}); // Using Constructor for book-details
+
+        this._cleanupCurrentView(); // For book-details
+        app.data.currentView = app.views.BookDetail({ // Created VIEW for book-details
+            model: app.data.book // View will be able to listen to render the content of this model when data availb.
+        });  
+
+        this._activateBookDetailPanel();    // For book-details
+        $('[data-id=book]').empty().append(app.data.currentView.$el) // For book-details
+
+        app.data.book.fetch();
     },
 
     unknown: function() {
@@ -73,12 +85,12 @@ app.routers.Router = Backbone.Router.extend({
 
 // ---------------------------------------------- UTILITY FUNCTIONS ---------------------------------------------
 
-    _activateBooksListPanel: function(selector) {
+    _activateBooksListPanel: function() {
         $('[data-id="books-wrapper] .is-visible').removeClass('is-visible');
         $('[data-id=books-list]').addClass('is-visible');
     },
 
-    _activateBookDetailPanel: function(selector) {
+    _activateBookDetailPanel: function() {
         $('[data-id="books-wrapper] .is-visible').removeClass('is-visible');
         $('[data-id=book]').addClass('is-visible');
     },
@@ -110,9 +122,9 @@ L) That's why we added 'data-id="books-wrapper'.removeClass(is-visible);
 M) We can add 'reset:true' property to FETCH. If we do so backbone will still generate the add events for each one of the of the model that gets loaded from the server but at the end it will also generate a reset event and because our VIEW is LISTENING TO this event. And we will finally render.
 N) Added '_cleanupCurrentView: function(){}' -- This function will take care of ensuring that if there is something already displayed in the web page, we are going to clean it up. And it will reinitialize 'app.data.currentView = null;'
 O) We chained with the empty() the this $('[data-id=books-list]').empty().append(app.data.currentView.$el); (Also $el is create a new Div.)
-P) 
-Q)
-R)
+P) So we need to create a model for the book because we need to contact the server in order to retrieve in order to information for the book. That' why we created 'Book.js' under the models file.  
+Q) We created new object in our data object 'app.data.book = new app.models.Book();' (So if you remember the DATA object is the one where we store all of the objects that we create using the constructor functions.)
+R) Let's create the 'BookDetail.js' in the VIEW file.
 S)
 T)
 U)

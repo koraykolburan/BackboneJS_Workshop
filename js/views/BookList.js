@@ -5,7 +5,7 @@ app.views.BooksList = Backbone.View.extend({
     },
 
     render: function() {
-        console.log("BookList:render");
+        console.log("BookList:render" + app.data.BooksList);
 
         this.$el.html('<div class="data-book"><ul></ul></div>');
         let $ul = this.$('ul'); //look at ul element 
