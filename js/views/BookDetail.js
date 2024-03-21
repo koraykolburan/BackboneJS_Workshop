@@ -7,6 +7,12 @@ app.views.BookDetail = Backbone.View.extend({
         let info = this.model.get("volumeInfo");
         let images = info.imageLinks;
 
+        let publisher = "";
+
+        if(info.publisher) {
+            publisher = ' ・ Sold by ' + info.publisher;
+        }
+
         this.$el.html(
             '<header class="book-header">' +
 
@@ -19,10 +25,11 @@ app.views.BookDetail = Backbone.View.extend({
 
                     '<div class="sub-info">' +
                         '<div class="author details">' +
-                            '<a href="#" id="author">' + info.authors.join(" - ") + '</a>' +
+                            (info.authors ? '<a href="#" id="author">' + info.authors.join(" - ") : "") + 
+                            '</a>' +
                         '</div>' +
                         '<span class="publish-date">' + info.publishedDate + '</span>' + 
-                        '<span class="publisher-details">' + ' ・ Sold by ' + info.publisher + '</span>' +
+                        '<span class="publisher-details">' + publisher + '</span>' +
                     '</div>' +
                 '</div>' +
 
