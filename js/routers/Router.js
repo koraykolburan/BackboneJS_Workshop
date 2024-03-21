@@ -66,10 +66,10 @@ app.routers.Router = Backbone.Router.extend({
     book: function(id, bookId) {            // passing the parameter the 'id' and 'bookId' of the category
         console.log("book " + bookId + " for category " + id);
 
-        app.data.book = new app.data.models.Book({id: bookId}); // Using Constructor for book-details
+        app.data.book = new app.models.Book({id: bookId}); // Using Constructor for book-details
 
         this._cleanupCurrentView(); // For book-details
-        app.data.currentView = app.views.BookDetail({ // Created VIEW for book-details
+        app.data.currentView = new app.views.BookDetail({ // Created VIEW for book-details
             model: app.data.book // View will be able to listen to render the content of this model when data availb.
         });  
 
@@ -124,8 +124,8 @@ N) Added '_cleanupCurrentView: function(){}' -- This function will take care of 
 O) We chained with the empty() the this $('[data-id=books-list]').empty().append(app.data.currentView.$el); (Also $el is create a new Div.)
 P) So we need to create a model for the book because we need to contact the server in order to retrieve in order to information for the book. That' why we created 'Book.js' under the models file.  
 Q) We created new object in our data object 'app.data.book = new app.models.Book();' (So if you remember the DATA object is the one where we store all of the objects that we create using the constructor functions.)
-R) Let's create the 'BookDetail.js' in the VIEW file.
-S)
+R) Let's create the 'BookDetail.js' in the VIEW file. And we set up the render of the BookDetail.js.
+S) 
 T)
 U)
 V)
