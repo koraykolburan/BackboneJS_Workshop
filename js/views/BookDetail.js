@@ -1,4 +1,7 @@
 app.views.BookDetail = Backbone.View.extend({
+
+    template: _.template($('script[data-id=book-detail-view]').html()), //-- UNDERSCORE --
+
     initialize: function() {
         this.listenTo(this.model, "change", this.render);
     },
@@ -12,7 +15,7 @@ app.views.BookDetail = Backbone.View.extend({
         if(info.publisher) {
             publisher = ' ・ Sold by ' + info.publisher;
         }
-
+        /*
         this.$el.html(
             '<header class="book-header">' +
 
@@ -59,6 +62,13 @@ app.views.BookDetail = Backbone.View.extend({
             '</div>'
 
         );
+        */
+
+        this.$el.html( this.template({ //-- UNDERSCORE --
+            info: info,
+            publisher: publisher,
+            images: images, 
+        }) );
 
         return this;
         
