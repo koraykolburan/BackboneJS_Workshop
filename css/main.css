@@ -35,10 +35,6 @@ small {
     font-size: 0.8em;
 }
 
-header {
-    position: fixed;
-}
-
 img{
     border-radius: 4px;
     box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
@@ -63,10 +59,6 @@ img{
     /* overflow: hidden; */
 }
 
-.l-content-constrained {
-    padding-left: 270px;
-}
-
 .l-column {
     display: table-cell;
     vertical-align: top;
@@ -78,7 +70,7 @@ img{
 }
 
 .sticky {
-    position: sticky;
+    padding: 1em 1em 1em 0.4em;
 }
 
 /* =========================================================
@@ -114,6 +106,7 @@ img{
 
 .topbar {
     background-color: #FFFFFF;
+    border-radius: 30px;
 }
 
 .topbar a :hover {
@@ -125,18 +118,21 @@ img{
     font-weight: 300;
     color: #054F7C;
     background-color: #E5F1F9;
-    float: left;
+    display: inline-block;
     border-radius: 30px;
     }
-    .topbar-title > i {
+    .topbar-title i {
         font-size: 1.5em;
-        margin-right: 0.5em;
     }
     .topbar-title > h2 {
         display: inline-block;
     }
+    .topbar-title a {
+        margin-right: 0.5em;
+    }
 
 .categories {
+    display: none;
     position: absolute;
     z-index: 100;
     font-size: 1.2em;
@@ -161,9 +157,13 @@ img{
         font-weight: 400;
     }
 
+.thumbs {
+    text-align: center;
+}
+
 .thumb {
-    float: left;
-    height: 207px;
+    display: inline-block;
+    max-height: 207px;
     margin: 0.5em 0.2em;
     }
     .thumb:hover {
@@ -313,10 +313,60 @@ img{
      }
  }
 
-@media screen and (max-width: 960px) {
-    
+@media screen and (min-width: 932px) {
+    .l-content-constrained {
+        padding-left: 270px;
+    }
+    .categories {
+        display: block;
+    }
+    .fa-bars {
+        display: none;
+    }
+    .topbar-header {
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+    }
+    .topbar-title {
+        display: block;
+        margin-top: 15px;
+    }
  }
 
-@media screen and (max-width: 600px) {
-    
+@media screen and (max-width: 932px) {
+    .topbar-header {
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+    }
+    .topbar-title {
+        text-align: center;
+        display: inline-block;
+        overflow: visible;
+    }
+    .fa-book {
+        display: none;
+    }
+    .topbar {
+        /* width: 100%; */
+        position: sticky;
+        /* top: 0; */
+        display: block;
+        overflow: visible;
+    }
+    .sticky {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.4em;
+        position: fixed;
+        background: #FFFFFF;
+        border-radius: 30px;
+        box-shadow: 0 4px 5px 0 
+        rgba(0,0,0,.14), 
+        0 1px 10px 0 rgba(0,0,0,.12), 
+        0 2px 4px -1px rgba(0,0,0,.2);
+
+    }
  }   
