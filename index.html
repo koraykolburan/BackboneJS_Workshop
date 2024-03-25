@@ -7,7 +7,8 @@
 
     <link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Stoke:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Stoke:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -18,37 +19,37 @@
 
     <!-- Header -->
     <header class="topbar-header">
-        <div class="l-pad sticky">
-            <a href="#category/all">
-                <span class="logo">
-                    <i class="fa-solid fa-stairs"></i>
-                    <h1>Boogie <span class="logo-sub">App</span></h1>
+        <div class="topbar cf" data-id="topbar">
+            <div class="l-pad sticky">
+                <a href="#category/all">
+                    <span class="logo">
+                        <i class="fa-solid fa-stairs"></i>
+                        <h1>Boogie App</h1>
+                    </span>
+                </a>
+                <span class="topbar-title l-pad">
+                    <a data-id="category-toggle" href="#"><i class="fa-solid fa-bars"></i></a>
+                    <a href="#category/all"><i class="fa-solid fa-book"></i></a>
+                    <h2>Books</h2>
                 </span>
-            </a>
-            <span class="topbar-title l-sidebar l-pad">
-                <a href="#"><i class="fa-solid fa-bars"></i></a>
-                <a href="#category/all"><i class="fa-solid fa-book"></i></a>
-                <h2>Books</h2>
-            </span>
-        </div>
-
-        <div class="topbar cf">
-        <!-- Categories -->
-        <aside>
-            <div class="categories l-sidebar">
-                <ul>
-                    <li><a href="#category/all">All</a></li>
-                    <li><a href="#category/scifi">Science Fiction</a></li>
-                    <li><a href="#category/romance">Romance</a></li>
-                    <li><a href="#category/horror">Horror</a></li>
-                    <li><a href="#category/sport">Sports</a></li>
-                </ul>
             </div>
+
+        
+        <!-- Categories -->
+            <aside>
+                <div class="categories l-sidebar" data-id="categories">
+                    <ul>
+                        <li><a href="#category/all" data-id="category">All</a></li>
+                        <li><a href="#category/scifi" data-id="category">Science Fiction</a></li>
+                        <li><a href="#category/romance" data-id="category">Romance</a></li>
+                        <li><a href="#category/horror" data-id="category">Horror</a></li>
+                        <li><a href="#category/sport" data-id="category">Sports</a></li>
+                    </ul>
+                </div>
             </aside>
         </div>
 
         <div>
-
         </div>
 
     </header>    
@@ -113,6 +114,8 @@
     <script src="/js/views/BookList.js"></script>
     <script src="/js/models/Book.js"></script>
     <script src="/js/views/BookDetail.js"></script>
+    <script src="/js/views/TopBar.js"></script>
+
     <script src="/js/main.js"></script> <!-- Starting the application process -->
 </body>
 </html>

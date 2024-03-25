@@ -84,15 +84,14 @@ img{
  }
 
  .logo {
-    font-family: "Stoke", sans-serif;
+    font-family: "Exo 2", sans-serif;
     }
 
     .logo h1 {
         display: inline-block;
-        margin-right: 0.5em;
-        color: #5F6367;
+        color: rgb(95, 99, 104);
         font-size: 1.5em;
-        font-weight: 300;
+        font-weight: 400;
     }
     .fa-stairs {
         font-size: 2.5em;
@@ -116,10 +115,12 @@ img{
 .topbar-title {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
-    color: #054F7C;
-    background-color: #E5F1F9;
+    color: #0279CA;
     display: inline-block;
     border-radius: 30px;
+    background-color: #E5F1F9;
+    font-size: 0.9em;
+    width: 265px;
     }
     .topbar-title i {
         font-size: 1.5em;
@@ -137,7 +138,7 @@ img{
     z-index: 100;
     font-size: 1.2em;
     line-height: 2em;
-    padding: 0.5em;
+    padding: 0 0.5em 0 0.5em;
 }
     .categories a {
         color: #5F6367;
@@ -153,6 +154,7 @@ img{
     .categories a:focus {
         color: #054F7C;
         background-color: #E5F1F9;
+        border-color: #E5F1F9;
         border-radius: 30px;
         font-weight: 400;
     }
@@ -174,6 +176,11 @@ img{
 .books,
 .book {
     display: none;
+}
+
+.fa-stairs {
+    top: 19px;
+    position: sticky;
 }
 
 #title{
@@ -224,7 +231,7 @@ img{
     top: 120px;
     margin-left: 270px;
     position: relative;
-    padding: 1em 5em 1em 0;
+    padding: 1em 5em 1em 1em;
 }
 
 .book-content {
@@ -303,6 +310,14 @@ img{
     display: block;
  }
 
+ .is-visible2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    position: fixed;
+ }
+
 /* =========================================================
  * Responsive Design
  * =========================================================*/
@@ -332,9 +347,17 @@ img{
         display: block;
         margin-top: 15px;
     }
+    .sub-buttons {
+        padding-right: 25px;
+    }
  }
 
-@media screen and (max-width: 932px) {
+ @media screen and (max-width: 932px) {
+    .topbar {
+        position: sticky;
+        display: block;
+        overflow: visible;
+    }
     .topbar-header {
         width: 100%;
         position: fixed;
@@ -344,29 +367,110 @@ img{
         text-align: center;
         display: inline-block;
         overflow: visible;
+        background-color: #FFFFFF;
+        border-radius: 0;
+        width: 120px;
+        padding: 1.4em 1em 1em 1em;
     }
     .fa-book {
         display: none;
     }
-    .topbar {
-        /* width: 100%; */
+    .fa-stairs {
+        top: 8px;
         position: sticky;
-        /* top: 0; */
-        display: block;
-        overflow: visible;
     }
     .sticky {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        padding: 0.4em;
+        padding: 0.4em 0.4em 0 0.4em;
         position: fixed;
         background: #FFFFFF;
-        border-radius: 30px;
+        font-size: 14px;
         box-shadow: 0 4px 5px 0 
         rgba(0,0,0,.14), 
         0 1px 10px 0 rgba(0,0,0,.12), 
         0 2px 4px -1px rgba(0,0,0,.2);
 
     }
+    .logo h1 {
+        font-size: 1.6em;
+        font-weight: 500;
+    }
+    .book-header {
+        margin: 0;
+        padding: 1em;
+        justify-content: space-around;
+    }
+    .book-content {
+        margin: 0;
+        padding: 1em;
+    }
+    .subtitle {
+        padding: 1em;
+    }
+    .book-img {
+        padding: 1em;
+    }
+        .sub-buttons {
+            padding-bottom: 1em;
+        }
+    #title {
+        font-size: 3.5em;
+    }    
+    .categories {
+        width: 100%;
+        text-align: center;
+        top: 3.1em;
+        padding: 1em;
+        margin: 0;
+        background-color: #FFFFFF;
+        box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),
+         0 1px 10px 0 rgba(0,0,0,.12),
+          0 2px 4px -1px rgba(0,0,0,.2);
+    }
+    .categories ul {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+
+    }
+    .categories ul li {
+        border: 0.1em solid #DADCE0;
+        border-radius: 20px;
+    }
+    .categories ul li a {
+        font-weight: 400;
+        font-size: 14px;
+    }
+    .categories ul li:selected {
+        border-color: #e5f1f9;
+    }
  }   
+
+ @media screen and (max-width: 600px) {
+    .purchase, .sub-buttons, .free-sample {
+        width: 100%;
+    }
+    .sub-info {
+        text-align: center;
+    }
+    .buttons {
+        padding: 1em;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .subtitle {
+        width: 100%;
+        text-align: center;
+    }
+ }
+
+ @media screen and (max-width: 500px) {
+    .categories ul {
+        display: inline-flex;
+        flex-direction: column;
+    }
+ }
