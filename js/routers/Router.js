@@ -125,13 +125,6 @@ O) We chained with the empty() the this $('[data-id=books-list]').empty().append
 P) So we need to create a model for the book because we need to contact the server in order to retrieve in order to information for the book. That' why we created 'Book.js' under the models file.  
 Q) We created new object in our data object 'app.data.book = new app.models.Book();' (So if you remember the DATA object is the one where we store all of the objects that we create using the constructor functions.)
 R) Let's create the 'BookDetail.js' in the VIEW file. And we set up the render of the BookDetail.js.
-S) 
-T)
-U)
-V)
-W)
-X)
-Y)
-Z)
+
 -------------------------------------------------------------------------------------------------------------------- 
 */
