@@ -13,6 +13,7 @@
 10) Then we need to test also the Collection.
 */
 
+//Testing the Models and Collection
 describe("models/Book", function() {
     
     //When
@@ -31,5 +32,19 @@ describe("models/Books_details", function() {
     it("it builds the REST endpoint with the categoryId passed in the constructor option 'catId'", function() {
         let books = new app.models.Books(null, {catId: "categoryId"});
         expect(books.url()).to.equal("api/books_categoryId.json");
+    });
+});
+
+//Testing the View - Initialization: we are testing two different situations with a view. A)Initialize and B)Render
+describe("views/BookDetail", function() {
+    describe("When initializing", function() {
+        it("It re-renders itself when the model changes", function() {
+            let model = new app.models.Book({id: "id1"});
+             
+            let render = sinon.stub(app.views.BookDetail.prototype, "render");
+        });
+    });
+    describe("When rendering", function() {
+
     });
 });
