@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boogie App Unit Tests</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.4.0/mocha.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.4.0/mocha.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.4.1/chai.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sinon.js/17.0.1/sinon.js"></script>
+</head>
+<body>
+
+    <div id="mocha"></div>
+
+    <script>
+        mocha.setup("bdd");
+        assert = chai.assert; //chai provide support for two types of functions expect in the set. Global Variable.
+
+        expect = chai.expect; //adding to chai library
+
+        window.onload = function() { //run the MochaJS
+            window.mocha.run();
+        } 
+    </script>
+
+    <script type="text/html" data-id="book-detail-view">
+        <header class="book-header"> 
+
+            <div class=" subtitle">
+                <div class="title"><h1 id="title"><%= info.title %></h1>
+                </div>
+
+                <div class="sub-info">
+                    <div class="author details">
+                        <%= (info.authors ? '<a href="#" id="author">' + info.authors.join(" - ") : "") %>
+                        </a>
+                    </div>
+                    <span class="publish-date"> <%= info.publishedDate %> </span> 
+                    <span class="publisher-details"> <%= publisher %> </span>
+                </div>
+            </div>
+
+            <div class="book-img">
+                <img src="<%= (images.small || images.thumbnail) %>">
+            </div>
+
+            <div class="buttons"> 
+                <div class="sub-buttons"> 
+                    <button class="purchase">
+                        <span>($00.00) Ebook</span>
+                    </button>
+                </div>
+                <div class="sub-buttons"> 
+                    <button class="free-sample">Free Sample</button>
+                </div>
+            </div>
+            
+
+        </header>
+        
+        <div class="book-content">
+            <h2 class="title">About this e-book</h2>
+            <p> 
+                <%= info.description %>
+            </p>
+        </div>
+
+    </script>
+
+    <!-- We import all of the JavaScript files that we have in our project, excluding the main.js file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.6.0/backbone-min.js"></script>
+
+    <script src="/js/bootstrap.js"></script> <!-- Declaring -->
+    <script src="/js/routers/Router.js"></script> <!-- Declaring -->
+    <script src="/js/models/Books.js"></script>
+    <script src="/js/views/BookList.js"></script>
+    <script src="/js/models/Book.js"></script>
+    <script src="/js/views/BookDetail.js"></script>
+    <script src="/js/views/TopBar.js"></script>
+
+    <!-- Test -->
+    <script src="test/tests.js"></script>
+
+</body>
+</html>
