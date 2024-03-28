@@ -11,6 +11,11 @@
 9) The "expect();" function is one of those function that is provided by ChaiJS . "expect = chai.expect;" in the HTML.
 ☉ The "expect();" requires a condition.
 10) Then we need to test also the Collection.
+11) We need to check if the render function is called. Line 45.
+12) Sinon.js provide a functionality that is called "stub()" that let's you redefine a function.
+13) So if we call this function "sinon.stub()" nothing will happen but we are able to know if this function has been called. So that we would do that is to change the original render function in our view.
+14) So if we want to redefine the render function we need to that at prototype level. That's why redefine their function that is now stored in the prototype of the book detail constructor function. Because that is the place where the render function is stored.
+15) 
 */
 
 //Testing the Models and Collection
@@ -41,7 +46,16 @@ describe("views/BookDetail", function() {
         it("It re-renders itself when the model changes", function() {
             let model = new app.models.Book({id: "id1"});
              
-            let render = sinon.stub(app.views.BookDetail.prototype, "render");
+            let render = sinon.stub(app.views.BookDetail.prototype, "render"); //render
+            let view = new app.views.BookDetail({   //view
+                model: model
+            })
+
+            model.set("property", "value");
+
+            expect(render.called).to.be.true;
+
+            app.views.BookDetail.prototype.render.restore();
         });
     });
     describe("When rendering", function() {
