@@ -41,8 +41,9 @@ describe("models/Books_details", function() {
 });
 
 //Testing the View - Initialization: we are testing two different situations with a view. A)Initialize and B)Render
+
 describe("views/BookDetail", function() {
-    describe("When initializing", function() {
+    describe("When initializing", function() { // A) testing the "initialize:"
         it("It re-renders itself when the model changes", function() {
             let model = new app.models.Book({id: "id1"});
              
@@ -58,7 +59,68 @@ describe("views/BookDetail", function() {
             app.views.BookDetail.prototype.render.restore();
         });
     });
-    describe("When rendering", function() {
+    describe("When rendering", function() { //B) testing the "render:"
 
-    });
+        /* 
+        Whatever we create at this level, will be visible for both of the, so we can create one single model and use the same model in both function.
+        I chose only one section that volumeInfo because this is the section that we are working with it.
+    -   I will check the, the titles, authors, publish date, description, and image links.
+        (So these are the information our viewer needs to render if we remove one of these information, probably the view will give us an error because we are expecting to have all of this information.)
+        At this time we provide the constructor function with the Json data with all of the attributes that we want to be set immediately on the model. So what may more that will be created and all of the attributes would be set up automatically.
+        Firstly I create the model providing the modelTemplate.
+        And I create the view of type BookDetail providing as usual model.
+
+        There is no FETCHING in here, I'm not testing the communication between the client and the server.
+        Because this is a unit test. And unit tests you're code in isolation.
+        I'm not interested the verifying when In said sth on the model it triggers a change event and the change event triggers surrender because this is sth that I already did it.
+        */
+        let modelTemplate = {
+            "volumeInfo": {
+                "title": "Book Name",
+                "authors": [
+                 "Author's Name"
+                ],
+                "publisher": "Publisher Name",
+                "publishedDate": "01-01-2024",
+                "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut laboreet dolore magna aliqua Aenean euismod elementum nisi quis eleifend quam adipiscing vitae proin Eu mi bibendum neque egestas congue Mattis aliquam faucibus purus in Id neque aliquam vestibulum morbi Nec ultrices dui sapien eget mi proin sed libero Iaculis at erat pellentesque adipiscing commodo elit Montes nascetur ridiculus mus. Mauris vitae ultricies leo integer Ut tellus elementum sagittis vitae et leo duis ut Leo vel orci porta non pulvinar neque, Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut laboreet dolore magna aliqua Aenean euismod elementum nisi quis eleifend quam adipiscing vitae proin Eu mi bibendum neque egestas congue. Mattis aliquam faucibus purus in Id neque aliquam vestibulum morbi Nec ultrices dui sapien eget mi proin sed libero Iaculis at erat pellentesque adipiscing commodo elit Montes nascetur ridiculus mus mauris vitae ultricies leo integer Ut tellus elementum sagittis vitae et leo duis ut Leo vel orci porta non pulvinar neque, Tristique senectus et netus et Ut ornare lectus sit amet Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper Nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi Nullam vehicula ipsum a arcu Viverra nibh cras pulvinar mattis nunc sed blandit libero volutpat Laoreet non curabitur gravida arcu Id consectetur purus ut faucibus pulvinar Mauris cursus mattis molestie a iaculis at erat pellentesque adipiscing",
+                
+                "printType": "BOOK",
+                "categories": [
+                 "ABC / DEFG",
+                 "ABC / DEFG2",
+                 "ABC / DEFG3"
+                ],
+                "imageLinks": {
+                 "smallThumbnail": "https://images.pexels.com/photos/6373305/pexels-photo-6373305.jpeg",
+                 "thumbnail": "https://images.pexels.com/photos/6373305/pexels-photo-6373305.jpeg",
+                 "small": "https://images.pexels.com/photos/6373305/pexels-photo-6373305.jpeg",
+                 "medium": "https://images.pexels.com/photos/6373305/pexels-photo-6373305.jpeg",
+                 "large": "https://images.pexels.com/photos/6373305/pexels-photo-6373305.jpeg",
+                 "extraLarge": "https://images.pexels.com/photos/6373305/pexels-photo-6373305.jpeg"
+                }
+               }
+        }
+
+        it("it doesn't display the publisher if not present in the JSON data", function() {
+            let model = new app.models.Book(modelTemplate);
+            let view = new app.views.BookDetail({
+                model: model
+            });
+
+            view.render();
+
+            expect(view.$('[data-id=publisher]').html()).to.equal(" ・ Sold by Publisher Name");
+        });
+
+        it("it renders the author", function() {
+            // let model = new app.models.Book(modelTemplate);
+            // let view = new app.views.BookDetail({
+            //     model: model
+            // });
+
+            // view.render();
+
+            // expect(view.$('[data-id=authors]').text()).to.equal("Author\'s Name");
+        });
+    })
 });
