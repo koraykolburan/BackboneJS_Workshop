@@ -1,24 +1,5 @@
-/*
-1) We have only two Model to test: the Book.js and Books.js
-2) These models are doing is to build a "URL" that will be used to contact the server and "GET" the information out of the SERVER SIDE and we can TEST this.
-3) MochaJS always star with a "describe" function.
-☉    describe(statement, function(){})
-4) When you call the describe function that means you are describing what you are TESTING.
-5) For BDD - We need to use GIVEN, WHEN and THEN.
-6) So we are testing that when creating a new model, the model will configure it's own rest-end points using the "id" property that we passed to the MODEL.
-7) So we are implementing the WHEN and THEN.
-8) We can verify the this expectation is met. >>>> "//the URL should now be: api/book_ID.json"
-9) The "expect();" function is one of those function that is provided by ChaiJS . "expect = chai.expect;" in the HTML.
-☉ The "expect();" requires a condition.
-10) Then we need to test also the Collection.
-11) We need to check if the render function is called. Line 45.
-12) Sinon.js provide a functionality that is called "stub()" that let's you redefine a function.
-13) So if we call this function "sinon.stub()" nothing will happen but we are able to know if this function has been called. So that we would do that is to change the original render function in our view.
-14) So if we want to redefine the render function we need to that at prototype level. That's why redefine their function that is now stored in the prototype of the book detail constructor function. Because that is the place where the render function is stored.
-15) 
-*/
-
 //Testing the Models and Collection
+
 describe("models/Book", function() {
     
     //When
@@ -40,7 +21,7 @@ describe("models/Books_details", function() {
     });
 });
 
-//Testing the View - Initialization: we are testing two different situations with a view. A)Initialize and B)Render
+//Testing the View - A)Initialize and B)Render
 
 describe("views/BookDetail", function() {
     describe("When initializing", function() { // A) testing the "initialize:"
@@ -60,20 +41,6 @@ describe("views/BookDetail", function() {
         });
     });
     describe("When rendering", function() { //B) testing the "render:"
-
-        /* 
-        Whatever we create at this level, will be visible for both of the, so we can create one single model and use the same model in both function.
-        I chose only one section that volumeInfo because this is the section that we are working with it.
-    -   I will check the, the titles, authors, publish date, description, and image links.
-        (So these are the information our viewer needs to render if we remove one of these information, probably the view will give us an error because we are expecting to have all of this information.)
-        At this time we provide the constructor function with the Json data with all of the attributes that we want to be set immediately on the model. So what may more that will be created and all of the attributes would be set up automatically.
-        Firstly I create the model providing the modelTemplate.
-        And I create the view of type BookDetail providing as usual model.
-
-        There is no FETCHING in here, I'm not testing the communication between the client and the server.
-        Because this is a unit test. And unit tests you're code in isolation.
-        I'm not interested the verifying when In said sth on the model it triggers a change event and the change event triggers surrender because this is sth that I already did it.
-        */
         let modelTemplate = {
             "volumeInfo": {
                 "title": "Book Name",
@@ -113,14 +80,73 @@ describe("views/BookDetail", function() {
         });
 
         it("it renders the author", function() {
-            // let model = new app.models.Book(modelTemplate);
-            // let view = new app.views.BookDetail({
-            //     model: model
-            // });
+            let model = new app.models.Book(modelTemplate);
+            let view = new app.views.BookDetail({
+                model: model
+            });
 
-            // view.render();
+            view.render();
 
-            // expect(view.$('[data-id=authors]').text()).to.equal("Author\'s Name");
-        });
-    })
+            expect(view.$('[data-id=authors]').text()).to.equal("Author's Name");
+            });
+        
+        it("it renders the publish date", function() {
+            let model = new app.models.Book(modelTemplate);
+            let view =  new app.views.BookDetail({
+                model: model
+            });
+
+            view.render();
+
+            expect(view.$('[data-id=publish-date]').html()).to.equal("01-01-2024");
+
+            });
+
+
+    });
 });
+
+//Testing the Router
+describe("routers/Router.js", function() {
+
+    let router;
+
+    beforeEach(function(){
+        let MockRouter = app.routers.Router.extend({
+            home: sinon.spy(),
+            category: sinon.spy(),
+            book: sinon.spy(),
+            unknown: sinon.spy()
+        });
+        router = new MockRouter();
+
+        if(Backbone.History.started !== true) {
+            Backbone.history.start();
+        }
+    });
+
+    //resetting URL
+    afterEach(function(){
+        router.navigate("", {trigger:true});
+    });
+
+    it("routes to home if no hash fragment is present", function() {
+        router.navigate("", {trigger:true});
+        expect(router.home.called).to.be.true;
+    });
+
+    it("routes to category if hash fragment contains 'category/<catid>'", function() {
+        router.navigate("category/categoryId", {trigger:true});
+        expect(router.category.called).to.be.true;
+    });
+
+    it("routes to book if hash fragment contains 'category/id/book/id'", function() {
+        router.navigate("category/id/book/id", {trigger:true});
+        expect(router.book.called).to.be.true;
+    });
+
+    it("routes to unknown if has fragment is not recognized", function() {
+        router.navigate("something/different", {trigger:true});
+        expect(router.unknown.called).to.be.true;
+    });
+})

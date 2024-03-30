@@ -33,10 +33,7 @@
                 </div>
 
                 <div class="sub-info">
-                    <div class="author details" data-id="authors">
-                        <%= (info.authors ? '<a href="#" id="author">' + info.authors.join(" - ") : "") %>
-                        </a>
-                    </div>
+                    <div class="author details" data-id="authors"><%= info.authors ? '<a href="#" id="author">' + info.authors.join(" - ") : "" %></a></div>
                     <span class="publish-date" data-id="publish-date"><%= info.publishedDate %></span> 
                     <span class="publisher-details" data-id="publisher"><%= publisher %></span>
                 </div>
